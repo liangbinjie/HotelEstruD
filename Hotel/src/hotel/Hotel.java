@@ -9,40 +9,14 @@ public class Hotel extends javax.swing.JFrame {
     private DataInputStream entrada;
     private DataOutputStream salida;
     private String mensajeRecibido = "";
-    Cola ficha = new Cola();
+    Servidor server = new Servidor();
     
     
     public Hotel() {
         initComponents();
         setLocationRelativeTo(null);
-        inicializarServidor();
     }
     
-    public void inicializarServidor() {
-        try {
-            sc = new ServerSocket(PUERTO);
-            cl = new Socket();
-
-            System.out.println("Esperando conexion...");
-            cl = sc.accept();
-            System.out.println("Sistema conectado!");
-            entrada = new DataInputStream(cl.getInputStream());
-            salida = new DataOutputStream(cl.getOutputStream());
-            while (true) {
-//                mensajeRecibido = entrada.readUTF(); // recibe el nombre
-//                System.out.println("Nombre: " + mensajeRecibido);
-//                mensajeRecibido = String.valueOf(entrada.readLong()); // recibe la identificacion
-//                System.out.println("Identificacion: " + mensajeRecibido);
-
-                int f = ficha.ficha();
-                salida.writeInt(f);
-            }
-
-
-        } catch (IOException ex) {
-            System.out.println("Error en el servidor");
-        }
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,19 +30,21 @@ public class Hotel extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         atenderBtn = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
+        mostrarBtn = new javax.swing.JButton();
+        initServer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setText("Hotel Fidelitas");
+        jLabel1.setText("Hotel EstruD");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(231, Short.MAX_VALUE)
+                .addContainerGap(259, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(226, 226, 226))
         );
@@ -91,13 +67,40 @@ public class Hotel extends javax.swing.JFrame {
         getContentPane().add(atenderBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
         getContentPane().add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 420, 10, 10));
 
+        mostrarBtn.setText("Mostrar Cola");
+        mostrarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(mostrarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, -1, -1));
+
+        initServer.setText("Iniciar Servidor");
+        initServer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                initServerActionPerformed(evt);
+            }
+        });
+        getContentPane().add(initServer, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void atenderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atenderBtnActionPerformed
         // TODO add your handling code here:
-        ficha.atender();
+        
+        server.cola.atender();
     }//GEN-LAST:event_atenderBtnActionPerformed
+
+    private void mostrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarBtnActionPerformed
+        // TODO add your handling code here:
+        server.cola.mostrar_cola();
+    }//GEN-LAST:event_mostrarBtnActionPerformed
+
+    private void initServerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initServerActionPerformed
+        // TODO add your handling code here:
+        server.start();
+    }//GEN-LAST:event_initServerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,7 +140,9 @@ public class Hotel extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atenderBtn;
     private javax.swing.Box.Filler filler1;
+    private javax.swing.JButton initServer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton mostrarBtn;
     // End of variables declaration//GEN-END:variables
 }

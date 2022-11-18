@@ -45,6 +45,19 @@ public class Cola {
     }
     
     public int ficha() {
+        Reservas reserva = new Reservas();
+        reserva.setFicha(ids);
+        Nodo nuevo = new Nodo();
+        nuevo.setReserva(reserva);
+        
+        if (vacia()) {
+            inicio = nuevo;
+            fin = nuevo;
+        } else {
+            fin.setSiguiente(nuevo);
+            fin = nuevo;
+        }
+        
         int id = ids++;
         return id;
     }

@@ -9,7 +9,6 @@ public class Cliente extends javax.swing.JFrame {
     private DataInputStream entrada;
     private DataOutputStream salida;
     private int ficha = 0;
-    private String mensajeEnviar = "";
     
     public Cliente() {
         initComponents();
@@ -21,7 +20,7 @@ public class Cliente extends javax.swing.JFrame {
         try {
             sc = new Socket(HOST, PUERTO);
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al tratar de conectarse con el hotel");
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al tratar de inicializar el hotel");
         }
     }
     
@@ -69,15 +68,10 @@ public class Cliente extends javax.swing.JFrame {
 
     private void getFichaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getFichaBtnActionPerformed
            try {
-                entrada = new DataInputStream(sc.getInputStream());
                 salida = new DataOutputStream(sc.getOutputStream());
+                salida.writeUTF("hello");
+                entrada = new DataInputStream(sc.getInputStream());
            
-//                mensajeEnviar = nameField.getText();
-//                salida.writeUTF(mensajeEnviar);
-//                mensajeEnviar = idField.getText();
-//                salida.writeLong(Long.parseLong(mensajeEnviar));
-                // se envian los datos
-                // luego obtenemos la ficha de entrada
                 ficha = entrada.readInt();
            JOptionPane.showMessageDialog(null, "Ficha no: " + ficha);
            } catch (IOException ex) {
