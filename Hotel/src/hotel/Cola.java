@@ -45,7 +45,13 @@ public class Cola {
     }
     
     public int ficha() {
+        Date fecha = new Date();
+        LocalDate localDate = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        int year  = localDate.getYear();
+        int month = localDate.getMonthValue();
+        int day   = localDate.getDayOfMonth();
         Reservas reserva = new Reservas();
+        reserva.setId(ids+"00"+day+""+month+""+year);
         reserva.setFicha(ids);
         Nodo nuevo = new Nodo();
         nuevo.setReserva(reserva);
@@ -62,13 +68,17 @@ public class Cola {
         return id;
     }
     
-    public void atender() {
+    public int atender() {
+        int id = 0;
         if (!vacia()) {
-            JOptionPane.showMessageDialog(null, "Atendiendo reserva numero: " + inicio.getReserva().getFicha()); 
+            JOptionPane.showMessageDialog(null, "Atendiendo ficha numero: " + inicio.getReserva().getFicha()); 
+            id = inicio.getReserva().getFicha();
             inicio = inicio.getSiguiente();
         } else {
             JOptionPane.showMessageDialog(null, "No hay cliente que atender");
         }
+        
+        return id;
     }
     
     public void mostrar_cola() {
@@ -76,9 +86,7 @@ public class Cola {
             String s = "";
             Nodo aux = inicio;
             while (aux!=null) {
-                s+= "Ficha No: " + aux.getReserva().getFicha() + " | Nombre: " 
-                        + aux.getReserva().getCliente() + " | Identificacion: " 
-                        + aux.getReserva().getIdentificacion() + "\n";
+                s+= "Ficha No: " + aux.getReserva().getFicha() + "\n";
                 aux = aux.getSiguiente();
             }
             

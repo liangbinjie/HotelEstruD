@@ -1,16 +1,12 @@
 package hotel;
-import java.io.*;
-import java.net.*;
+
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class Hotel extends javax.swing.JFrame {
-    private static final int PUERTO = 5000;
-    private ServerSocket sc;
-    private Socket cl;
-    private DataInputStream entrada;
-    private DataOutputStream salida;
-    private String mensajeRecibido = "";
     Servidor server = new Servidor();
-    
+
     
     public Hotel() {
         initComponents();
@@ -31,6 +27,7 @@ public class Hotel extends javax.swing.JFrame {
         atenderBtn = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
         mostrarBtn = new javax.swing.JButton();
+        showR = new javax.swing.JButton();
         initServer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,13 +72,21 @@ public class Hotel extends javax.swing.JFrame {
         });
         getContentPane().add(mostrarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, -1, -1));
 
-        initServer.setText("Iniciar Servidor");
+        showR.setText("Mostrar reservas");
+        showR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showRActionPerformed(evt);
+            }
+        });
+        getContentPane().add(showR, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 130, -1));
+
+        initServer.setText("jButton1");
         initServer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 initServerActionPerformed(evt);
             }
         });
-        getContentPane().add(initServer, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, -1, -1));
+        getContentPane().add(initServer, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -89,7 +94,16 @@ public class Hotel extends javax.swing.JFrame {
     private void atenderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atenderBtnActionPerformed
         // TODO add your handling code here:
         
-        server.cola.atender();
+        Date fecha = new Date();
+        LocalDate localDate = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        int year  = localDate.getYear();
+        int month = localDate.getMonthValue();
+        int day   = localDate.getDayOfMonth();
+        
+        int ficha = server.cola.atender();
+        String id = ficha+"00"+day+""+month+""+year;
+        
+        new VReservas(id, ficha).setVisible(true);
     }//GEN-LAST:event_atenderBtnActionPerformed
 
     private void mostrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarBtnActionPerformed
@@ -101,6 +115,11 @@ public class Hotel extends javax.swing.JFrame {
         // TODO add your handling code here:
         server.start();
     }//GEN-LAST:event_initServerActionPerformed
+
+    private void showRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showRActionPerformed
+        // TODO add your handling code here:
+        server.listaReservas.mostrar();
+    }//GEN-LAST:event_showRActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,5 +163,6 @@ public class Hotel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton mostrarBtn;
+    private javax.swing.JButton showR;
     // End of variables declaration//GEN-END:variables
 }

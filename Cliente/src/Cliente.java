@@ -13,10 +13,10 @@ public class Cliente extends javax.swing.JFrame {
     public Cliente() {
         initComponents();
         setLocationRelativeTo(null);
-        inicializarCliente();
+        initCliente();
     }
     
-    public void inicializarCliente() {
+    public void initCliente() {
         try {
             sc = new Socket(HOST, PUERTO);
         } catch (IOException ex) {
@@ -112,6 +112,7 @@ public class Cliente extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Cliente().setVisible(true);
+                
             }
         });
     }
