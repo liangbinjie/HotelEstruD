@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 public class Cola {
     private Nodo inicio;
     private Nodo fin;
-    private int ids = 0;
+    private int ids = 1;
     
     public Cola() {
         this.inicio = null;
@@ -19,31 +19,6 @@ public class Cola {
     }
     
     // metodo para obtener una nueva ficha
-    public void nueva_ficha() {
-        Date fecha = new Date();
-        LocalDate localDate = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        int year  = localDate.getYear();
-        int month = localDate.getMonthValue();
-        int day   = localDate.getDayOfMonth();
-
-        Reservas reserva = new Reservas();
-        reserva.setId(ids+"00"+day+""+month+""+year);
-        reserva.setFicha(ids++);
-        reserva.setCliente(JOptionPane.showInputDialog(null, "Ingrese tu nombre completo"));
-        reserva.setIdentificacion(Long.parseLong(JOptionPane.showInputDialog(null, "Ingrese tu identificacion")));
-        
-        Nodo nuevo = new Nodo();
-        nuevo.setReserva(reserva);
-        
-        if (vacia()) {
-            inicio = nuevo;
-            fin = nuevo;
-        } else {
-            fin.setSiguiente(nuevo);
-            fin = nuevo;
-        }
-    }
-    
     public int ficha() {
         Date fecha = new Date();
         LocalDate localDate = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();

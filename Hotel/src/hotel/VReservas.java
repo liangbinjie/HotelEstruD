@@ -10,6 +10,8 @@ public class VReservas extends javax.swing.JFrame {
      */
     public VReservas(String id, int ficha) {
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Formulario Check-In");
         reservaID.setText(id);
         noFicha.setText(String.valueOf(ficha));
     }

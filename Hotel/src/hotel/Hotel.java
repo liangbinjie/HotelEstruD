@@ -129,16 +129,20 @@ public class Hotel extends javax.swing.JFrame {
 
     private void atenderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atenderBtnActionPerformed
         // TODO add your handling code here:
-        Date fecha = new Date();
-        LocalDate localDate = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        int year  = localDate.getYear();
-        int month = localDate.getMonthValue();
-        int day   = localDate.getDayOfMonth();
-        
         int ficha = Servidor.cola.atender();
-        String id = ficha+"00"+day+""+month+""+year;
-        
-        new VReservas(id, ficha).setVisible(true);
+        if (ficha > 0) {
+            Date fecha = new Date();
+            LocalDate localDate = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            int year  = localDate.getYear();
+            int month = localDate.getMonthValue();
+            int day   = localDate.getDayOfMonth();
+
+
+            String id = ficha+"00"+day+""+month+""+year;
+
+            new VReservas(id, ficha).setVisible(true);
+        }
+
     }//GEN-LAST:event_atenderBtnActionPerformed
 
     private void mostrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarBtnActionPerformed
