@@ -24,11 +24,6 @@ public class Cliente extends javax.swing.JFrame {
         }
     }
     
-    public void limpiar() {
-        nameField.setText("");
-        idField.setText("");
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,8 +34,6 @@ public class Cliente extends javax.swing.JFrame {
     private void initComponents() {
 
         getFichaBtn = new javax.swing.JButton();
-        nameField = new javax.swing.JTextField();
-        idField = new javax.swing.JTextField();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,14 +46,6 @@ public class Cliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(getFichaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 140, 130));
-
-        nameField.setText("nombre");
-        nameField.setToolTipText("Ingrese su nombre completo");
-        getContentPane().add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 160, -1));
-
-        idField.setText("identificacion");
-        idField.setToolTipText("Ingrese su identificacion");
-        getContentPane().add(idField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 160, -1));
         getContentPane().add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 440, 20, 20));
 
         pack();
@@ -120,7 +105,5 @@ public class Cliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;
     private javax.swing.JButton getFichaBtn;
-    private javax.swing.JTextField idField;
-    private javax.swing.JTextField nameField;
     // End of variables declaration//GEN-END:variables
 }

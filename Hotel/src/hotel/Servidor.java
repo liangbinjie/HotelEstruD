@@ -9,8 +9,8 @@ public class Servidor extends Thread {
     private DataOutputStream salida;
     private DataInputStream entrada;
     private String mensajeRecibido = "";
-    protected Cola cola = new Cola();
-    protected ListaES listaReservas = new ListaES();
+    public static Cola cola = new Cola();
+    public static ListaES listaReservas = new ListaES();
     
     @Override
     public void run() {
@@ -18,6 +18,7 @@ public class Servidor extends Thread {
         try {
             sc = new ServerSocket(PUERTO);
             cl = new Socket();
+
             
             System.out.println("Esperando conexion...");
             cl = sc.accept();
@@ -33,5 +34,10 @@ public class Servidor extends Thread {
         } catch (IOException ex) {
             System.out.println("Error en el servidor");
         }
+    }
+    
+    public static void mostrar() {
+        listaReservas.mostrar();
+        
     }
 }

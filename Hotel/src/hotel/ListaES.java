@@ -1,8 +1,5 @@
 package hotel;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 import javax.swing.JOptionPane;
 
 public class ListaES {
@@ -53,7 +50,6 @@ public class ListaES {
     
     public void mostrar() {
         String s = "";
-        System.out.println("Hello");
         if (!vacio()) {
             Nodo aux = inicio;
             

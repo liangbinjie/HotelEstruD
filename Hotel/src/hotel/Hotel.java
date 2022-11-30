@@ -80,7 +80,7 @@ public class Hotel extends javax.swing.JFrame {
         });
         getContentPane().add(showR, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 130, -1));
 
-        initServer.setText("jButton1");
+        initServer.setText("Iniciar servidor");
         initServer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 initServerActionPerformed(evt);
@@ -100,7 +100,7 @@ public class Hotel extends javax.swing.JFrame {
         int month = localDate.getMonthValue();
         int day   = localDate.getDayOfMonth();
         
-        int ficha = server.cola.atender();
+        int ficha = Servidor.cola.atender();
         String id = ficha+"00"+day+""+month+""+year;
         
         new VReservas(id, ficha).setVisible(true);
@@ -108,7 +108,7 @@ public class Hotel extends javax.swing.JFrame {
 
     private void mostrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarBtnActionPerformed
         // TODO add your handling code here:
-        server.cola.mostrar_cola();
+        Servidor.cola.mostrar_cola();
     }//GEN-LAST:event_mostrarBtnActionPerformed
 
     private void initServerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initServerActionPerformed
@@ -118,7 +118,7 @@ public class Hotel extends javax.swing.JFrame {
 
     private void showRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showRActionPerformed
         // TODO add your handling code here:
-        server.listaReservas.mostrar();
+        Servidor.mostrar();
     }//GEN-LAST:event_showRActionPerformed
 
     /**

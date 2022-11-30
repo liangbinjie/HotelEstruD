@@ -15,7 +15,7 @@ public class VReservas extends javax.swing.JFrame {
     }
     
     public VReservas() {
-        initComponents();
+        
     }
 
     /**
@@ -226,7 +226,7 @@ public class VReservas extends javax.swing.JFrame {
         int cantN = (int) cantNoches.getValue();
         
         
-        server.listaReservas.agregar(reservaID.getText(), ficha, nombre.getText(), ident, cantA, cantK, String.valueOf(tipoH.getSelectedItem()), cantN, 0);
+        Servidor.listaReservas.agregar(reservaID.getText(), ficha, nombre.getText(), ident, cantA, cantK, String.valueOf(tipoH.getSelectedItem()), cantN, 0);
         this.dispose();
     }//GEN-LAST:event_saveBtnActionPerformed
 
