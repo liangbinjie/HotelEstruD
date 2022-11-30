@@ -1,6 +1,7 @@
 package hotel;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 public class ListaES {
     private Nodo inicio;
