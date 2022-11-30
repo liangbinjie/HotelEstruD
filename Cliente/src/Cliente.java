@@ -20,7 +20,7 @@ public class Cliente extends javax.swing.JFrame {
         try {
             sc = new Socket(HOST, PUERTO);
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al tratar de inicializar el hotel");
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al tratar de conectarse con el hotel\nIntenta inicializar el servidor");
         }
     }
     
