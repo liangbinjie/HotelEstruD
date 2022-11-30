@@ -13,10 +13,6 @@ public class VReservas extends javax.swing.JFrame {
         reservaID.setText(id);
         noFicha.setText(String.valueOf(ficha));
     }
-    
-    public VReservas() {
-        
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -1,15 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package hotel;
 
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author 123
- */
+
 public class ListaReservas extends javax.swing.JFrame {
 
     /**
@@ -18,15 +11,11 @@ public class ListaReservas extends javax.swing.JFrame {
     public ListaReservas() {
         initComponents();
         setLocationRelativeTo(null);
-        reservas.getModel().setValueAt("1002312", 0, 0);
-        reservas.getModel().setValueAt("Benji", 0, 1);
-        reservas.getModel().setValueAt("3", 0, 2);
-        reservas.getModel().setValueAt("$3000", 0, 3);
         mostrar();
     }
 
     public void mostrar() {
-        System.out.println(Servidor.listaReservas);
+        Servidor.listaReservas.getReservas(reservas);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,6 +34,25 @@ public class ListaReservas extends javax.swing.JFrame {
 
         reservas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {

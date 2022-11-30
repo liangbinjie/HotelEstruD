@@ -66,4 +66,29 @@ public class ListaES {
             JOptionPane.showMessageDialog(null, "Vacio");
         }
     }
+   
+    
+    public void getReservas(JTable tabla) {
+        String s = "";
+        if (!vacio()) {
+            Nodo aux = inicio;
+            int fila = 0;
+            
+            while (aux!=null) {
+                s = aux.getReserva().getId();
+                tabla.getModel().setValueAt(s, fila, 0);
+                s = aux.getReserva().getCliente();
+                tabla.getModel().setValueAt(s, fila, 1);
+                int noches = aux.getReserva().getNoches();
+                tabla.getModel().setValueAt(noches, fila, 2);
+                aux = aux.getSiguiente();
+                fila++;
+            }
+            
+        }
+        
+        else {
+            JOptionPane.showMessageDialog(null, "Vacio");
+        }
+    }
 }

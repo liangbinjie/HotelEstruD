@@ -129,7 +129,6 @@ public class Hotel extends javax.swing.JFrame {
 
     private void atenderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atenderBtnActionPerformed
         // TODO add your handling code here:
-        
         Date fecha = new Date();
         LocalDate localDate = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         int year  = localDate.getYear();
@@ -154,7 +153,6 @@ public class Hotel extends javax.swing.JFrame {
 
     private void showRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showRActionPerformed
         // TODO add your handling code here:
-        Servidor.mostrar();
         new ListaReservas().setVisible(true);
     }//GEN-LAST:event_showRActionPerformed
 

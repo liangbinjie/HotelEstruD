@@ -35,9 +35,4 @@ public class Servidor extends Thread {
             System.out.println("Error en el servidor");
         }
     }
-    
-    public static void mostrar() {
-        listaReservas.mostrar();
-        
-    }
 }
