@@ -3,6 +3,12 @@
 Grupo 2
 
 
+- Binjie Liang
+- Julian Samuel Rojas Saenz
+- Nazareth Noelia Murillo Villalobos
+- Javir Andres Tapia Alvarez
+
+
 
 El proposito de este proyecto es crear un sistema para la administracion de reservas de un hotel
 
