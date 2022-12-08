@@ -1,5 +1,8 @@
 # HotelEstruD
 
+Grupo 2
+
+
 
 El proposito de este proyecto es crear un sistema para la administracion de reservas de un hotel
 
