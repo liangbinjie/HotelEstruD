@@ -175,7 +175,6 @@ public class Hotel extends javax.swing.JFrame {
     private void ingresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresosActionPerformed
         // TODO add your handling code here:
         Servidor.listaReservas.extraer();
-        JOptionPane.showMessageDialog(null, "Ingresos totales del dia: $" + Servidor.listaCFacturas.sumaRecur());
     }//GEN-LAST:event_ingresosActionPerformed
 
     /**

@@ -116,9 +116,11 @@ public class ListaES {
             Servidor.listaCFacturas = new ListaSC();
             while (aux!=null) {
                 Servidor.listaCFacturas.agregar(aux.getReserva());
-                
                 aux = aux.getSiguiente();
             }
+            JOptionPane.showMessageDialog(null, "Ingresos totales del dia: $" + Servidor.listaCFacturas.sumaRecur());
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay reservas realizadas hoy");
         }
     }
 }
