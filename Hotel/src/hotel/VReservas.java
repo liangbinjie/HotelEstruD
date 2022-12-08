@@ -32,7 +32,6 @@ public class VReservas extends javax.swing.JFrame {
         cantAdultos = new javax.swing.JSpinner();
         cantNinos = new javax.swing.JSpinner();
         tipoH = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
         cantNoches = new javax.swing.JSpinner();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -46,7 +45,6 @@ public class VReservas extends javax.swing.JFrame {
         atendiendo = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         noFicha = new javax.swing.JLabel();
-        montoField = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -70,7 +68,7 @@ public class VReservas extends javax.swing.JFrame {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        cantAdultos.setModel(new javax.swing.SpinnerNumberModel(1, 1, 4, 1));
+        cantAdultos.setModel(new javax.swing.SpinnerNumberModel(0, 0, 4, 1));
         cantAdultos.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 cantAdultosStateChanged(evt);
@@ -90,8 +88,6 @@ public class VReservas extends javax.swing.JFrame {
                 tipoHItemStateChanged(evt);
             }
         });
-
-        jLabel2.setText("Monto: $");
 
         cantNoches.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         cantNoches.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -131,8 +127,6 @@ public class VReservas extends javax.swing.JFrame {
 
         jLabel9.setText("Reserva:");
 
-        montoField.setText("0");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -166,11 +160,7 @@ public class VReservas extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(reservaID, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(tipoH, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cantNoches)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(montoField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(cantNoches))
                         .addGap(133, 133, 133))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,10 +204,7 @@ public class VReservas extends javax.swing.JFrame {
                     .addComponent(identificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cantNoches, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(montoField))
+                .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cantAdultos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,8 +236,20 @@ public class VReservas extends javax.swing.JFrame {
         int cantK = (int) cantNinos.getValue();
         int cantN = (int) cantNoches.getValue();
         
+        Double montoFinal = 0.00;
+        montoFinal += cantA*129.99;
+        montoFinal += cantK*90;
+        montoFinal += cantN*150;
+        String h = String.valueOf(tipoH.getSelectedItem());
+        switch (h) {
+            case "Familiar" -> montoFinal += 60;
+            case "Standard" -> montoFinal += 20;
+            case "Deluxe" -> montoFinal += 100;
+            default -> {
+            }
+        }
         
-        Servidor.listaReservas.agregar(reservaID.getText(), ficha, nombre.getText(), ident, cantA, cantK, String.valueOf(tipoH.getSelectedItem()), cantN, 0);
+        Servidor.listaReservas.agregar(reservaID.getText(), ficha, nombre.getText(), ident, cantA, cantK, h, cantN, montoFinal);
         this.dispose();
     }//GEN-LAST:event_saveBtnActionPerformed
 
@@ -261,30 +260,20 @@ public class VReservas extends javax.swing.JFrame {
 
     private void tipoHItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_tipoHItemStateChanged
         // TODO add your handling code here:
-        Double montoActual = Double.parseDouble(montoField.getText());
-        Double montoUp = 0.00;
-        String h = String.valueOf(tipoH.getSelectedItem());
-        switch (h) {
-            case "Familiar" -> montoActual += 60;
-            case "Standard" -> montoActual += 20;
-            case "Deluxe" -> montoActual += 100;
-            default -> {
-            }
-        }
-        montoField.setText(String.valueOf(montoActual));
+//        Double montoUp = 0.00;
+
+
     }//GEN-LAST:event_tipoHItemStateChanged
 
     private void cantAdultosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_cantAdultosStateChanged
         // TODO add your handling code here:
-        Double monto = (Double) cantAdultos.getValue() * 120;
-        montoField.setText(String.valueOf(monto));
+
         
     }//GEN-LAST:event_cantAdultosStateChanged
 
     private void cantNinosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_cantNinosStateChanged
         // TODO add your handling code here:
-        Double monto = (Double) cantAdultos.getValue() * 120;
-        montoField.setText(String.valueOf(monto));
+
     }//GEN-LAST:event_cantNinosStateChanged
 
     private void cantNochesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_cantNochesStateChanged
@@ -334,7 +323,6 @@ public class VReservas extends javax.swing.JFrame {
     private javax.swing.JSpinner cantNoches;
     private javax.swing.JTextField identificacion;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -343,7 +331,6 @@ public class VReservas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel montoField;
     private javax.swing.JLabel noFicha;
     private javax.swing.JTextField nombre;
     private javax.swing.JLabel reservaID;

@@ -53,15 +53,12 @@ public class ListaES {
         String s = "";
         if (!vacio()) {
             Nodo aux = inicio;
-            
             while (aux!=null) {
                 s += aux.getReserva().getId() + "\n";
                 aux = aux.getSiguiente();
             }
-            
             JOptionPane.showMessageDialog(null, s);
         }
-        
         else {
             JOptionPane.showMessageDialog(null, "Vacio");
         }
@@ -77,11 +74,31 @@ public class ListaES {
             while (aux!=null) {
                 s = aux.getReserva().getId();
                 tabla.getModel().setValueAt(s, fila, 0);
+                
                 s = aux.getReserva().getCliente();
                 tabla.getModel().setValueAt(s, fila, 1);
+                
+                long id = aux.getReserva().getIdentificacion();
+                tabla.getModel().setValueAt(id, fila, 2);
+                
+                int adultos = aux.getReserva().getCantAdultos();
+                tabla.getModel().setValueAt(adultos, fila, 3);
+                
+                int ninos = aux.getReserva().getCantNinos();
+                tabla.getModel().setValueAt(ninos, fila, 4);
+                
                 int noches = aux.getReserva().getNoches();
-                tabla.getModel().setValueAt(noches, fila, 2);
+                tabla.getModel().setValueAt(noches, fila, 5);
+                
+                s = aux.getReserva().getTipoHabitacion();
+                tabla.getModel().setValueAt(s, fila, 6);
+
+                double monto = aux.getReserva().getMonto();
+                tabla.getModel().setValueAt(monto, fila, 7);
+                
+                
                 aux = aux.getSiguiente();
+                
                 fila++;
             }
             
