@@ -77,11 +77,12 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="106" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="initServer" min="-2" pref="130" max="-2" attributes="0"/>
-                      <Component id="showR" min="-2" pref="130" max="-2" attributes="0"/>
-                      <Component id="atenderBtn" min="-2" pref="130" max="-2" attributes="0"/>
-                      <Component id="mostrarBtn" min="-2" pref="130" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="ingresos" max="32767" attributes="0"/>
+                      <Component id="initServer" alignment="1" pref="130" max="32767" attributes="0"/>
+                      <Component id="showR" alignment="1" pref="130" max="32767" attributes="0"/>
+                      <Component id="atenderBtn" alignment="1" pref="130" max="32767" attributes="0"/>
+                      <Component id="mostrarBtn" alignment="1" pref="130" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
               </Group>
@@ -97,8 +98,10 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="showR" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="ingresos" min="-2" pref="41" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="initServer" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace pref="164" max="32767" attributes="0"/>
+                  <EmptySpace pref="105" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -143,6 +146,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="initServerActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="ingresos">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ingresos"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ingresosActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

@@ -13,11 +13,33 @@ public class ListaSC{
     }
 
     public boolean vacio() {
-        if (inicio == null) {
-            return true;
+        return (inicio == null);
+    }
+
+    public void agregar(Reservas reserva) {
+        Nodo nuevo = new Nodo();
+        nuevo.setReserva(reserva);
+        
+        if (vacio()) {
+            inicio = nuevo;
+            fin = nuevo;
+        } else if (reserva.getFicha() < inicio.getReserva().getFicha()) {
+            nuevo.setSiguiente(inicio);
+            inicio = nuevo;
+            fin.setSiguiente(inicio);
+        } else if (reserva.getFicha() > inicio.getReserva().getFicha()) {
+            fin.setSiguiente(nuevo);
+            fin = nuevo;
+            fin.setSiguiente(inicio);
         } else {
-            return false;
+            Nodo aux = inicio;
+            while (aux.getReserva().getFicha() < reserva.getFicha()) {
+                aux = aux.getSiguiente();
+            }
+            nuevo.setSiguiente(aux.getSiguiente());
+            aux.setSiguiente(nuevo);
         }
+
     }
 
     public void mostrar() {

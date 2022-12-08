@@ -64,7 +64,7 @@ public class ListaES {
         }
     }
    
-    
+    // metodo para llenar la tabla al ver las reservas
     public void getReservas(JTable tabla) {
         String s = "";
         if (!vacio()) {
@@ -106,6 +106,19 @@ public class ListaES {
         
         else {
             JOptionPane.showMessageDialog(null, "Vacio");
+        }
+    }
+    
+    // metodo para extraer de lista enlazada simple a lista circular simple
+    public void extraer() {
+        if (!vacio()) {
+            Nodo aux = inicio;
+            Servidor.listaCFacturas = new ListaSC();
+            while (aux!=null) {
+                Servidor.listaCFacturas.agregar(aux.getReserva());
+                
+                aux = aux.getSiguiente();
+            }
         }
     }
 }

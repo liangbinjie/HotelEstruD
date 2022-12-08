@@ -11,12 +11,9 @@ public class ListaReservas extends javax.swing.JFrame {
     public ListaReservas() {
         initComponents();
         setLocationRelativeTo(null);
-        mostrar();
-    }
-
-    public void mostrar() {
         Servidor.listaReservas.getReservas(reservas);
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

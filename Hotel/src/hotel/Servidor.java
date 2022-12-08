@@ -11,6 +11,7 @@ public class Servidor extends Thread {
     private String mensajeRecibido = "";
     public static Cola cola = new Cola();
     public static ListaES listaReservas = new ListaES();
+    public static ListaSC listaCFacturas;
     
     @Override
     public void run() {
