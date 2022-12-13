@@ -8,6 +8,8 @@ Grupo 2
 - Nazareth Noelia Murillo Villalobos
 - Javir Andres Tapia Alvarez
 
+![image](https://user-images.githubusercontent.com/67171031/207444657-a4ec21ce-9fd9-403e-b2ce-9e518f80d455.png)
+
 
 
 El proposito de este proyecto es crear un sistema para la administracion de reservas de un hotel
